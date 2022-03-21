@@ -2,10 +2,10 @@ package com.example.myhouse.view.cameras
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.myhouse.databinding.FragmentCamerasBinding
 import com.example.myhouse.model.Camera
 
@@ -16,6 +16,8 @@ class CamerasFragment : Fragment() {
         get() {
             return _binding!!
         }
+   // private val viewModel: CamerasViewModel by viewModel()
+   // private val adapter: CamerasAdapter by lazy { CamerasAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,23 +30,6 @@ class CamerasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        val data: MutableList<Camera> = ArrayList()
-//        data.add(Camera("Camera 1","Earth","a",1, favorites = true, rec = true))
-//        data.add(Camera("Camera 2","Earth","a",1, true,true))
-//        data.add(Camera("Camera 3","Earth","a",1, true,true))
-//        data.add(Camera("Camera 4","Earth","a",1, true,true))
-//
-//        val adapter = CamerasAdapter(
-//            object : OnListItemClickListner {
-//                override fun onItemClick(camera: Camera) {
-//                    Log.d("AAA", "Click"+camera.name)
-//                }
-//            }, data)
-//        binding.cameraRecyclerView.adapter = adapter
-//        binding.cameraRecyclerView.setOnClickListener{
-//            Log.d("AAA", "Click")
-//        }
 
         val data = listOf(
             Camera("Camera 1","https://serverspace.ru/wp-content/uploads/2019/06/backup-i-snapshot.png","a",1, favorites = true, rec = false),
@@ -60,12 +45,37 @@ class CamerasFragment : Fragment() {
             }, data)
     }
 
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        viewModel.getLiveData().observe(viewLifecycleOwner, {renderData(it)})
+//        viewModel.getCamerasFromLocalSource()
+//    }
+
+//    private fun renderData(appStateCamera: AppStateCamera) = with(binding) {
+//        when(appStateCamera){
+//            is AppStateCamera.Success -> {
+//                camerasFragmentLoadingLayout.visibility = View.GONE
+//                cameraRecyclerView.adapter = adapter
+//                adapter?.setCameras(appStateCamera.cameraData)
+//            }
+//            is AppStateCamera.Loading -> {
+//              //  camerasFragmentLoadingLayout.visibility = View.VISIBLE
+//            }
+//            is AppStateCamera.Error -> {
+//                camerasFragmentLoadingLayout.visibility = View.GONE
+//            }
+//
+//        }
+//    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     companion object {
+        const val BUNDLE_EXTRA = "camera"
+
         fun newInstance(): CamerasFragment {
             return CamerasFragment()
         }

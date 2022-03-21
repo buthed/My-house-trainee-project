@@ -18,4 +18,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_camera" />
 
+    <FrameLayout
+        android:id="@+id/camerasFragmentLoadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

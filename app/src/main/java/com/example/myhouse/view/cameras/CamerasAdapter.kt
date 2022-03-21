@@ -3,15 +3,21 @@ package com.example.myhouse.view.cameras
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemCameraBinding
 import com.example.myhouse.model.Camera
 import com.squareup.picasso.Picasso
 
-class CamerasAdapter(private val onListItemClickListner: OnListItemClickListner,
-                     private var cameras: List<Camera>
-                      ): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>() {
+class CamerasAdapter(
+    private val onListItemClickListner: OnListItemClickListner,
+    private var cameras: List<Camera>
+    ): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>() {
+
+//    private var cameras: List<Camera> = arrayListOf()
+//    fun setCameras(data: List<Camera>) {
+//        cameras = data
+//        notifyDataSetChanged()
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CamerasViewHolder {
         val binding: ItemCameraBinding =  ItemCameraBinding.inflate(LayoutInflater.from(parent.context), parent, false)
