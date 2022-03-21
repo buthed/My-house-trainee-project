@@ -47,10 +47,10 @@ class CamerasFragment : Fragment() {
 //        }
 
         val data = listOf(
-            Camera("Camera 1","Earth","a",1, favorites = true, rec = true),
-            Camera("Camera 2","Earth","a",1, favorites = true, rec = true),
-            Camera("Camera 3","Earth","a",1, favorites = true, rec = true),
-            Camera("Camera 4","Earth","a",1, favorites = true, rec = true)
+            Camera("Camera 1","https://serverspace.ru/wp-content/uploads/2019/06/backup-i-snapshot.png","a",1, favorites = true, rec = false),
+            Camera("Camera 2","Earth","a",1, favorites = false, rec = true),
+            Camera("Camera 3","https://catherineasquithgallery.com/uploads/posts/2021-02/1612768484_140-p-fon-golubogo-morya-184.jpg","a",1, favorites = true, rec = false),
+            Camera("Camera 4","Earth","a",1, favorites = false, rec = true)
         )
         binding.cameraRecyclerView.adapter = CamerasAdapter(
             object : OnListItemClickListner {
