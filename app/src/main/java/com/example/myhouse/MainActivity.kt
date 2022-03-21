@@ -2,7 +2,7 @@ package com.example.myhouse
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myhouse.ui.main.MainFragment
+import com.example.myhouse.view.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
