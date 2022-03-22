@@ -5,15 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemCameraBinding
-import com.example.myhouse.model.Camera
-import com.example.myhouse.model.Door
+import com.example.myhouse.model.rest.rest_entites.CameraDTO
 import com.squareup.picasso.Picasso
 
 class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>() {
 
-    private var cameras: List<Camera> = listOf()
+    private var cameras: List<CameraDTO> = listOf()
 
-    fun setData(data: List<Camera>) {
+    fun setData(data: List<CameraDTO>) {
         cameras = data
         notifyDataSetChanged()
     }
@@ -30,14 +29,13 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
     override fun getItemCount() = cameras.size
 
     inner class CamerasViewHolder(view: View): RecyclerView.ViewHolder(view){
-        fun bind(camera: Camera){
+        fun bind(camera: CameraDTO){
             ItemCameraBinding.bind(itemView).apply {
                 cameraItemName.text = camera.name
                 if (camera.rec) cameraItemRec.visibility = View.VISIBLE
                 if (camera.favorites) cameraItemFavorite.setChecked(true)
-                val urlSnapshot: String = camera.snapshot       //TODO Picasso
+                val urlSnapshot: String = camera.snapshot
                 Picasso.get().load(urlSnapshot).into(cameraItemImageView)
-
             }
         }
     }

@@ -34,7 +34,7 @@ class CamerasFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(CamerasViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getCamerasFromLocalSource()
+        viewModel.getCamerasFromServer()
     }
 
     private fun renderData(appStateCameras: AppStateCameras) {

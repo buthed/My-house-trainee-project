@@ -4,7 +4,6 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myhouse.model.AppStateCameras
-import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.repository.Repository
 import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
@@ -16,8 +15,10 @@ class CamerasViewModel(
 
     fun getLiveData() = liveDataObserverCameras
 
-    fun getCamerasFromLocalSource() {
+    fun getCamerasFromServer() {
         liveDataObserverCameras.value = AppStateCameras.Loading
-        liveDataObserverCameras.value = AppStateCameras.Success(repository.getCamerasFromLocalStorage())
+        Thread {
+            liveDataObserverCameras.postValue(AppStateCameras.Success(repository.getCamerasFromServer()))
+        }.start()
     }
 }

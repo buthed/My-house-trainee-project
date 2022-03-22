@@ -1,8 +1,6 @@
 package com.example.myhouse.model
 
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
-import com.example.myhouse.model.rest.rest_entites.DoorsDataDTO
-import retrofit2.Call
 
 sealed class AppStateDoors{
     data class Success(val doorsData: List<DoorDTO>) : AppStateDoors()
