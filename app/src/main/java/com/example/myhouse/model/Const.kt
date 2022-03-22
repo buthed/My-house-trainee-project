@@ -1,2 +1,3 @@
-const val API_CAMERAS = "http://cars.cprogroup.ru/api/rubetek/cameras/"
-const val API_DOORS = "http://cars.cprogroup.ru/api/rubetek/doors/"
+const val API_BASE = "http://cars.cprogroup.ru/api/rubetek/"
+const val API_CAMERAS = "cameras/"
+const val API_DOORS = "doors/"
