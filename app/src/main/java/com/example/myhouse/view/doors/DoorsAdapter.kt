@@ -5,13 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
+import com.example.myhouse.model.Camera
 import com.example.myhouse.model.Door
 
 
-class DoorsAdapter(
-//    private var onListItemClickListner: OnListItemClickListner,
-//    private var doors: List<Door>
-): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
 
     private var doors: List<Door> = listOf()
 
@@ -24,9 +22,6 @@ class DoorsAdapter(
         val binding: ItemDoorsBinding =  ItemDoorsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DoorsViewHolder(binding.root)
     }
-
-
-
 
     override fun onBindViewHolder(holder: DoorsViewHolder, position: Int) {
         (holder as DoorsViewHolder).bind(doors[position])
@@ -42,5 +37,4 @@ class DoorsAdapter(
             }
         }
     }
-
 }

@@ -1,7 +1,6 @@
 package com.example.myhouse.view.doors
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentDoorsBinding
+import com.example.myhouse.model.AppStateCameras
 import com.example.myhouse.model.AppStateDoors
-import com.example.myhouse.model.Door
 import com.example.myhouse.viewmodel.DoorsViewModel
 
 class DoorsFragment : Fragment() {
