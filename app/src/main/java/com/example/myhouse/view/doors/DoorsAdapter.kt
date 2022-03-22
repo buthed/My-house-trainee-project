@@ -9,9 +9,16 @@ import com.example.myhouse.model.Door
 
 
 class DoorsAdapter(
-    private var onListItemClickListner: OnListItemClickListner,
-    private var doors: List<Door>
+//    private var onListItemClickListner: OnListItemClickListner,
+//    private var doors: List<Door>
 ): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+
+    private var doors: List<Door> = listOf()
+
+    fun setData(data: List<Door>) {
+        doors = data
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoorsViewHolder {
         val binding: ItemDoorsBinding =  ItemDoorsBinding.inflate(LayoutInflater.from(parent.context), parent, false)

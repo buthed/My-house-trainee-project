@@ -9,13 +9,14 @@ import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
 
 class DoorsViewModel(
-    val liveDataObserverCameras : MutableLiveData<AppStateDoors> = MutableLiveData(),
+    val liveDataObserverDoors : MutableLiveData<AppStateDoors> = MutableLiveData(),
     val repository: Repository = RepositoryImpl(RemoteDataSource)
 ): ViewModel(), LifecycleObserver {
 
-    fun getLiveData() = liveDataObserverCameras
+    fun getLiveData() = liveDataObserverDoors
 
     fun getDoorsFromLocalSource() {
-        repository.getDoorsFromLocalStorage()
+        liveDataObserverDoors.value = AppStateDoors.Loading
+        liveDataObserverDoors.value = AppStateDoors.Success(repository.getDoorsFromLocalStorage())
     }
 }

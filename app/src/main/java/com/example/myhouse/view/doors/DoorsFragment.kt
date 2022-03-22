@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentDoorsBinding
+import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.Door
 import com.example.myhouse.viewmodel.DoorsViewModel
 
@@ -19,7 +21,7 @@ class DoorsFragment : Fragment() {
             return _binding!!
         }
     lateinit var viewModel: DoorsViewModel
-
+    private val adapter: DoorsAdapter by lazy { DoorsAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,13 +35,24 @@ class DoorsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
-        val data = viewModel.repository.getDoorsFromLocalStorage()
-        binding.doorsRecyclerView.adapter = DoorsAdapter(
-            object : OnListItemClickListner {
-                override fun onItemClick(door: Door) {
-                    Log.d("AAA", "Click")
-                }
-            }, data)
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.getDoorsFromLocalSource()
+    }
+
+    private fun renderData(appStateDoors: AppStateDoors) {
+        when (appStateDoors) {
+            is AppStateDoors.Success -> {
+                //adapter.setListener(this)
+                binding.doorsRecyclerView.adapter = adapter
+                adapter.setData(appStateDoors.doorsData)
+            }
+            is AppStateDoors.Loading -> {
+                //TODO добавить загрузку?
+            }
+            is AppStateDoors.Error -> {
+
+            }
+        }
     }
 
     override fun onDestroyView() {
