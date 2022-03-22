@@ -2,14 +2,14 @@ package com.example.myhouse.view.doors
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myhouse.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.DataDoors
-
+import com.example.myhouse.viewmodel.DoorsViewModel
 
 class DoorsFragment : Fragment() {
 
@@ -18,7 +18,7 @@ class DoorsFragment : Fragment() {
         get() {
             return _binding!!
         }
-
+    lateinit var viewModel: DoorsViewModel
 
 
     override fun onCreateView(
@@ -32,13 +32,8 @@ class DoorsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val data = listOf(
-            DataDoors("Door1","Earth",1,true, "2"),
-            DataDoors("Door2","Earth",1,true, "2"),
-            DataDoors("Door3","Earth",1,true, "2"),
-            DataDoors("Door4","Earth",1,true, "2"),
-        )
+        viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
+        val data = viewModel.repository.getDoorsFromLocalStorage()
         binding.doorsRecyclerView.adapter = DoorsAdapter(
             object : OnListItemClickListner {
                 override fun onItemClick(dataDoors: DataDoors) {
