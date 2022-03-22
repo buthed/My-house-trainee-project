@@ -5,21 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
-import com.example.myhouse.model.DataDoors
+import com.example.myhouse.model.rest.rest_entites.DoorDTO
 
 
-class DoorsAdapter(
-    private var onListItemClickListner: OnListItemClickListner,
-    private var doors: List<DataDoors>
-): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+
+    private var doors: List<DoorDTO> = listOf()
+
+    fun setData(data: List<DoorDTO>) {
+        doors = data
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoorsViewHolder {
         val binding: ItemDoorsBinding =  ItemDoorsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DoorsViewHolder(binding.root)
     }
-
-
-
 
     override fun onBindViewHolder(holder: DoorsViewHolder, position: Int) {
         (holder as DoorsViewHolder).bind(doors[position])
@@ -28,12 +29,11 @@ class DoorsAdapter(
     override fun getItemCount() = doors.size
 
     inner class DoorsViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(dataDoors: DataDoors){
+        fun bind(door: DoorDTO){
             ItemDoorsBinding.bind(itemView).apply {
-                doorName.text = dataDoors.name
-                doorRoom.text = dataDoors.room
+                doorName.text = door.name
+                doorRoom.text = door.room
             }
         }
     }
-
 }

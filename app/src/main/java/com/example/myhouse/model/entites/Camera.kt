@@ -1,5 +1,4 @@
-package com.example.myhouse.model
-
+package com.example.myhouse.model.entites
 
 data class Camera (
     val name: String,
