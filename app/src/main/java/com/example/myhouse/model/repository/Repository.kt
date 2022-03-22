@@ -10,5 +10,5 @@ interface Repository {
     fun getCamerasFromLocalStorage(): List<Camera>
     fun getDoorsFromLocalStorage(): List<Door>
 
-    fun getDoorsFromServer(): Call<DoorsDataDTO>
+    fun getDoorsFromServer(): List<DoorDTO>
 }

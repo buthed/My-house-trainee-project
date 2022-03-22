@@ -11,8 +11,9 @@ class RepositoryImpl(private val remoteDataSource: RemoteDataSource): Repository
     override fun getCamerasFromLocalStorage(): List<Camera> = getCameras()
     override fun getDoorsFromLocalStorage(): List<Door> = getDoors()
 
-    override fun getDoorsFromServer(): Call<DoorsDataDTO> {
-        return remoteDataSource.api.getDoors()
+    override fun getDoorsFromServer(): List<DoorDTO> {
+        val dto = remoteDataSource.api.getDoorsSource().execute().body()
+        return dto?.data!!
     }
 
 }

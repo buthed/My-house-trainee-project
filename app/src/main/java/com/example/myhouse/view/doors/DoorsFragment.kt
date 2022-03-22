@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentDoorsBinding
-import com.example.myhouse.model.AppStateCameras
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.viewmodel.DoorsViewModel
 
@@ -35,7 +34,7 @@ class DoorsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getDoorsFromLocalSource()
+        viewModel.getDoorsFromServer()
     }
 
     private fun renderData(appStateDoors: AppStateDoors) {
