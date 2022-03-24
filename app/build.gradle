@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'realm-android'
 }
 
 android {
@@ -33,6 +34,10 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    realm {
+        syncEnabled = true
     }
 }
 
