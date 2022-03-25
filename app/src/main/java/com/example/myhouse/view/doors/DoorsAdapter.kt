@@ -34,7 +34,7 @@ class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
         fun bind(door: DoorDTO){
             ItemDoorsBinding.bind(itemView).apply {
                 doorName.text = door.name
-                doorRoom.text = door.room
+                door
             }
         }
     }

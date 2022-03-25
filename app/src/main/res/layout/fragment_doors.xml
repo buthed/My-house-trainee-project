@@ -3,15 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.doors.DoorsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/doorsRecyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_doors"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_doors" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
