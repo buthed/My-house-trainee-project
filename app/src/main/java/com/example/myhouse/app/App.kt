@@ -10,12 +10,11 @@ class App: Application() {
         super.onCreate()
 
         Realm.init(this)
-
-//        val realmName: String = "MyHouseDB"
-//        val config = RealmConfiguration.Builder()
-//            .name(realmName)
-//            .schemaVersion(0)
-//            .build()
-//        val backgroundThreadRealm : Realm = Realm.getInstance(config)
+        val realmName: String = "MyHouseDB"
+        val config = RealmConfiguration.Builder()
+            .name(realmName)
+            .schemaVersion(0)
+            .build()
+        Realm.setDefaultConfiguration(config)
     }
 }

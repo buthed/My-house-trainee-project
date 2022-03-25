@@ -3,6 +3,8 @@ package com.example.myhouse
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myhouse.view.main.MainFragment
+import io.realm.Realm
+import io.realm.RealmConfiguration
 
 class MainActivity : AppCompatActivity() {
 
