@@ -19,32 +19,30 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/doorLockImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/doorLockImageView"
             tools:src="@drawable/ic_launcher_foreground" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/doorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/defaultTextSize"
             android:layout_marginStart="30dp"
+            android:textSize="@dimen/defaultTextSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doorsItemImageView"
+            app:layout_constraintTop_toTopOf="@+id/doorLockImageView"
             tools:text="Name long long long long long" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/doorLockImageView"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:layout_marginEnd="50dp"
             android:src="@drawable/icon_lock"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="doorsItemImageView"
-            tools:ignore="ImageContrastCheck" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

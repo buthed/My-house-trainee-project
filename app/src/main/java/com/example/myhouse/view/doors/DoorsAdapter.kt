@@ -3,6 +3,7 @@ package com.example.myhouse.view.doors
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
 import com.example.myhouse.model.realm.RealmOperations
@@ -34,7 +35,12 @@ class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
         fun bind(door: DoorDTO){
             ItemDoorsBinding.bind(itemView).apply {
                 doorName.text = door.name
-                door
+                doorName.setOnClickListener {
+                    if (doorsItemImageView.isVisible) doorsItemImageView.visibility = View.GONE
+                    else doorsItemImageView.visibility = View.VISIBLE
+                }
+                doorsItemImageView.setOnClickListener {
+                }
             }
         }
     }
