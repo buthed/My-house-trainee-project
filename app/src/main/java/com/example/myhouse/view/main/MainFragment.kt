@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
         TabLayoutMediator(tabLayout,viewPager2){tab,position->
             when(position){
                 0->{  //TODO Переделать на ресурсы?
-                    tab.text= "Камеры"
+                    tab.text = "Камеры"
                 }
                 1->{
                     tab.text= "Двери"

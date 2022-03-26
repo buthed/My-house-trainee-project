@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
 import com.example.myhouse.model.realm.RealmOperations
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.squareup.picasso.Picasso
 
 
-class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+class DoorsAdapter(private var itemClickListener: OnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
 
     private lateinit var realmOperations: RealmOperations
     private var doors: List<DoorDTO> = listOf()
@@ -26,7 +27,7 @@ class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
     }
 
     override fun onBindViewHolder(holder: DoorsViewHolder, position: Int) {
-        (holder as DoorsViewHolder).bind(doors[position])
+        holder.bind(doors[position])
     }
 
     override fun getItemCount() = doors.size
@@ -40,6 +41,18 @@ class DoorsAdapter(): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
                     else doorsItemImageView.visibility = View.VISIBLE
                 }
                 doorsItemImageView.setOnClickListener {
+                    itemClickListener.onItemClick(door)
+                }
+                if (door.snapshot.isNullOrBlank()) {
+                    val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
+                    Picasso.get().load(urlSnapshot).into(doorsItemImageView)
+                } else {
+                    val urlSnapshot: String = door.snapshot
+                    Picasso.get().load(urlSnapshot).into(doorsItemImageView)
+                }
+
+                itemView.setOnClickListener{
+
                 }
             }
         }

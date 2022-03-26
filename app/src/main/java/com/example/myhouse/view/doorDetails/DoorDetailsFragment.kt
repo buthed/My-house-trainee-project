@@ -1,14 +1,13 @@
 package com.example.myhouse.view.doorDetails
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myhouse.R
+import androidx.fragment.app.Fragment
 import com.example.myhouse.databinding.FragmentDoorDetailsBinding
-import com.example.myhouse.databinding.FragmentDoorsBinding
-import com.example.myhouse.view.doors.DoorsFragment
+import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.squareup.picasso.Picasso
 
 class DoorDetailsFragment : Fragment() {
 
@@ -26,14 +25,35 @@ class DoorDetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.getParcelable<DoorDTO>(BUNDLE_EXTRA)?.apply {
+            doorBundle = this
+        }
+        renderData()
+    }
+
+    private fun renderData() = with(binding) {
+        doorDetailsName.text = doorBundle?.name
+        Picasso.get().load(doorBundle?.snapshot).into(doorDetailsSnapshot)
+        doorDetailsBackButton.setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    var doorBundle:DoorDTO? = null
+
     companion object {
-        fun newInstance(): DoorDetailsFragment {
-            return DoorDetailsFragment()
+        const val BUNDLE_EXTRA = "door"
+        fun newInstance(bundle: Bundle): DoorDetailsFragment {
+            val fragment = DoorDetailsFragment()
+            fragment.arguments = bundle
+            return fragment
         }
     }
 }

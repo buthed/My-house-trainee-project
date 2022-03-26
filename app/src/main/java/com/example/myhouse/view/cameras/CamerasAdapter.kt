@@ -23,7 +23,7 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
     }
 
     override fun onBindViewHolder(holder: CamerasViewHolder, position: Int) {
-        (holder as CamerasViewHolder).bind(cameras[position])
+        holder.bind(cameras[position])
     }
 
     override fun getItemCount() = cameras.size
@@ -34,8 +34,14 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
                 cameraItemName.text = camera.name
                 if (camera.rec) cameraItemRec.visibility = View.VISIBLE
                 if (camera.favorites) cameraItemFavorite.setChecked(true)
-                val urlSnapshot: String = camera.snapshot
-                Picasso.get().load(urlSnapshot).into(cameraItemImageView)
+                if (camera.snapshot.isNullOrBlank()) {
+                    val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
+                    Picasso.get().load(urlSnapshot).into(cameraItemImageView)
+                } else {
+                    val urlSnapshot: String = camera.snapshot
+                    Picasso.get().load(urlSnapshot).into(cameraItemImageView)
+                }
+
             }
         }
     }

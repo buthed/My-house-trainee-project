@@ -8,6 +8,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyHouse"
 include ':app'
-
-rootProject.name = "MyHouse"
-include ':app'
