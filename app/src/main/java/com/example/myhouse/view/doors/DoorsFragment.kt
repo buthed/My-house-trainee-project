@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.R
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
-import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.example.myhouse.model.realm.DoorRealm
 import com.example.myhouse.view.doorDetails.DoorDetailsFragment
 import com.example.myhouse.viewmodel.DoorsViewModel
 
@@ -26,7 +26,7 @@ class DoorsFragment : Fragment() {
     private val adapter: DoorsAdapter =
         DoorsAdapter(object : OnListItemClickListner {
 
-            override fun onItemClick(door: DoorDTO) {
+            override fun onItemClick(door: DoorRealm) {
                 Log.d("NewFragment","CLicl"+door.name)
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.container, DoorDetailsFragment.newInstance(Bundle().apply {

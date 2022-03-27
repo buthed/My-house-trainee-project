@@ -6,17 +6,18 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
-import com.example.myhouse.model.realm.RealmOperations
-import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.example.myhouse.model.realm.DoorRealm
+import com.example.myhouse.model.realm.RealmManager
 import com.squareup.picasso.Picasso
+import io.reactivex.rxjava3.core.Observable
 
 
 class DoorsAdapter(private var itemClickListener: OnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
 
-    private lateinit var realmOperations: RealmOperations
-    private var doors: List<DoorDTO> = listOf()
+    private lateinit var realmManager: RealmManager
+    private var doors: List<DoorRealm> = listOf()
 
-    fun setData(data: List<DoorDTO>) {
+    fun setData(data: List<DoorRealm>) {
         doors = data
         notifyDataSetChanged()
     }
@@ -31,9 +32,12 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
     }
 
     override fun getItemCount() = doors.size
+    fun setData(data: Observable<List<DoorRealm>>) {
+
+    }
 
     inner class DoorsViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(door: DoorDTO){
+        fun bind(door: DoorRealm){
             ItemDoorsBinding.bind(itemView).apply {
                 doorName.text = door.name
                 doorName.setOnClickListener {
@@ -47,7 +51,7 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
                     val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
                     Picasso.get().load(urlSnapshot).into(doorsItemImageView)
                 } else {
-                    val urlSnapshot: String = door.snapshot
+                    val urlSnapshot: String = door.snapshot!!
                     Picasso.get().load(urlSnapshot).into(doorsItemImageView)
                 }
 
