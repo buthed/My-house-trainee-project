@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg"
     tools:context=".view.main.MainFragment">
 
-
+    <TextView
+        android:text="@string/app_name"
+        android:textSize="@dimen/middleTextSize"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        style="@style/Base.Widget.Design.TabLayout"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:elevation="2dp"
+        android:background="#BFBFBF"/>
 
     <androidx.viewpager2.widget.ViewPager2
         xmlns:android="http://schemas.android.com/apk/res/android"

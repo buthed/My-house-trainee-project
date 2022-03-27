@@ -1,7 +1,7 @@
 package com.example.myhouse.view.doors
 
-import com.example.myhouse.model.Door
+import com.example.myhouse.model.rest.rest_entites.DoorDTO
 
 interface OnListItemClickListner {
-    fun onItemClick(door: Door)
+    fun onItemClick(door: DoorDTO)
 }

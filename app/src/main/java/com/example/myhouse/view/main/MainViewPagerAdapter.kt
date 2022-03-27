@@ -12,15 +12,9 @@ class MainViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
 
     override fun createFragment(position: Int): Fragment {
         return  when(position){
-            0->{
-                CamerasFragment()
-            }
-            1->{
-                DoorsFragment()
-            }
-            else->{
-                Fragment()
-            }
+            0->{ CamerasFragment() }
+            1->{ DoorsFragment() }
+            else->{ Fragment() }
         }
     }
 

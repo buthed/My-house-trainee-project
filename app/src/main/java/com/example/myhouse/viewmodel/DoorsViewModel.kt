@@ -10,7 +10,7 @@ import com.example.myhouse.model.rest.RemoteDataSource
 
 class DoorsViewModel(
     val liveDataObserverDoors : MutableLiveData<AppStateDoors> = MutableLiveData(),
-    val repository: Repository = RepositoryImpl(RemoteDataSource)
+    val repository: Repository = RepositoryImpl(RemoteDataSource),
 ): ViewModel(), LifecycleObserver {
 
     fun getLiveData() = liveDataObserverDoors
