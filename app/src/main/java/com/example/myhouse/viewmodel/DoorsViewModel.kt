@@ -8,6 +8,9 @@ import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.repository.Repository
 import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DoorsViewModel(
     val liveDataObserverDoors : MutableLiveData<AppStateDoors> = MutableLiveData(),
@@ -16,10 +19,10 @@ class DoorsViewModel(
 
     fun getLiveData() = liveDataObserverDoors
 
-    suspend fun getDoorsFromServer() {
+    fun getDoorsFromServer() {
         liveDataObserverDoors.postValue(AppStateDoors.Loading)
-//        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.IO) {
             liveDataObserverDoors.postValue(AppStateDoors.Success(repository.getDoorsFromServer()))
-//        }
+        }
     }
 }

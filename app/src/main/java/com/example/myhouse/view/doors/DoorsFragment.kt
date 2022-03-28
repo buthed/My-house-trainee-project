@@ -8,15 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.myhouse.R
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.example.myhouse.view.doorDetails.DoorDetailsFragment
 import com.example.myhouse.viewmodel.DoorsViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class DoorsFragment : Fragment() {
 
@@ -54,7 +52,10 @@ class DoorsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        GlobalScope.launch(Dispatchers.IO) {         viewModel.getDoorsFromServer() }
+        viewModel.getDoorsFromServer()
+
+        var itemTouchHelper = ItemTouchHelper(DoorsSwipeHelper(adapter.DoorsViewHolder(binding.root)))
+        itemTouchHelper.attachToRecyclerView(binding.doorsRecyclerView)
 
     }
 
