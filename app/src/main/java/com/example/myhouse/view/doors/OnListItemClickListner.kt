@@ -4,5 +4,5 @@ import com.example.myhouse.model.realm.DoorRealm
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 
 interface OnListItemClickListner {
-    fun onItemClick(door: DoorRealm)
+    fun onItemClick(door: DoorDTO)
 }

@@ -16,10 +16,10 @@ class DoorsViewModel(
 
     fun getLiveData() = liveDataObserverDoors
 
-    fun getDoorsFromServer() {
-        liveDataObserverDoors.value = AppStateDoors.Loading
-        Thread {
-            liveDataObserverDoors.postValue(AppStateDoors.Success(repository.getDoorsFromLocalStorage()))
-        }.start()
+    suspend fun getDoorsFromServer() {
+        liveDataObserverDoors.postValue(AppStateDoors.Loading)
+//        GlobalScope.launch(Dispatchers.IO) {
+            liveDataObserverDoors.postValue(AppStateDoors.Success(repository.getDoorsFromServer()))
+//        }
     }
 }

@@ -6,18 +6,17 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myhouse.databinding.ItemDoorsBinding
-import com.example.myhouse.model.realm.DoorRealm
 import com.example.myhouse.model.realm.RealmManager
+import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.squareup.picasso.Picasso
-import io.reactivex.rxjava3.core.Observable
 
 
 class DoorsAdapter(private var itemClickListener: OnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
 
     private lateinit var realmManager: RealmManager
-    private var doors: List<DoorRealm> = listOf()
+    private var doors: List<DoorDTO> = listOf()
 
-    fun setData(data: List<DoorRealm>) {
+    fun setData(data: List<DoorDTO>) {
         doors = data
         notifyDataSetChanged()
     }
@@ -32,12 +31,9 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
     }
 
     override fun getItemCount() = doors.size
-    fun setData(data: Observable<List<DoorRealm>>) {
-
-    }
 
     inner class DoorsViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(door: DoorRealm){
+        fun bind(door: DoorDTO){
             ItemDoorsBinding.bind(itemView).apply {
                 doorName.text = door.name
                 doorName.setOnClickListener {

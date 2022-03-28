@@ -11,16 +11,27 @@ import com.example.myhouse.model.rest.RemoteDataSource
 import com.example.myhouse.model.rest.rest_entites.CameraDTO
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import io.reactivex.rxjava3.core.Observable
+import io.realm.Realm
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class RepositoryImpl(
     private val remoteDataSource: RemoteDataSource,
     private val realmManager: RealmManager): Repository {
 
+    val backgroundThreadRealm : Realm = Realm.getInstance(Realm.getDefaultConfiguration())
+
     override fun getCamerasFromLocalStorage(): List<Camera> = getCameras()
-    override fun getDoorsFromLocalStorage(): List<DoorRealm> {
-            saveDoorsToLocalStorage()
-            return   realmManager.retrieveDoors()
-    }
+    override suspend fun getDoorsFromLocalStorage(): List<Door> = getDoors()
+
+//    override suspend fun getDoorsFromLocalStorage(): List<DoorRealm> {
+//        GlobalScope.launch(Dispatchers.IO) {
+//            if(realmManager.retrieveDoors().isEmpty())  saveDoorsToLocalStorage()
+//        }
+//        return   realmManager.retrieveDoors()
+//        backgroundThreadRealm.close()
+//    }
 
     override fun getDoorsFromServer(): List<DoorDTO> {
         val dto = remoteDataSource.api.getDoorsSource().execute().body()
@@ -32,9 +43,9 @@ class RepositoryImpl(
         return dto?.data?.cameras!!
     }
 
-    override fun saveDoorsToLocalStorage() {
-        for (i in getDoorsFromServer()) {
-            realmManager.insertDoor(i)
-        }
-    }
+//    override suspend fun saveDoorsToLocalStorage() {
+//        for (i in getDoorsFromServer()) {
+//            realmManager.insertDoor(i)
+//        }
+//    }
 }

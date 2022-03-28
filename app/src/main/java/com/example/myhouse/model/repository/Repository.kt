@@ -10,9 +10,9 @@ import io.reactivex.rxjava3.core.Observable
 
 interface Repository {
     fun getCamerasFromLocalStorage(): List<Camera>
-    fun getDoorsFromLocalStorage(): List<DoorRealm>
+    suspend fun getDoorsFromLocalStorage(): List<Door>
 
     fun getDoorsFromServer(): List<DoorDTO>
     fun getCamerasFromServer(): List<CameraDTO>
-    fun saveDoorsToLocalStorage()
+//    suspend fun saveDoorsToLocalStorage()
 }

@@ -11,9 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.R
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
-import com.example.myhouse.model.realm.DoorRealm
+import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.example.myhouse.view.doorDetails.DoorDetailsFragment
 import com.example.myhouse.viewmodel.DoorsViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DoorsFragment : Fragment() {
 
@@ -26,7 +29,7 @@ class DoorsFragment : Fragment() {
     private val adapter: DoorsAdapter =
         DoorsAdapter(object : OnListItemClickListner {
 
-            override fun onItemClick(door: DoorRealm) {
+            override fun onItemClick(door: DoorDTO) {
                 Log.d("NewFragment","CLicl"+door.name)
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.container, DoorDetailsFragment.newInstance(Bundle().apply {
@@ -51,7 +54,8 @@ class DoorsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getDoorsFromServer()
+        GlobalScope.launch(Dispatchers.IO) {         viewModel.getDoorsFromServer() }
+
     }
 
     private fun renderData(appStateDoors: AppStateDoors) {

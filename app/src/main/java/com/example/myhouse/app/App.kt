@@ -21,18 +21,7 @@ class App: Application() {
         val realmName: String = "MyHouseDB"
         val config = RealmConfiguration.Builder()
             .name(realmName)
-            .allowQueriesOnUiThread(true)
-            .allowWritesOnUiThread(true)
             .build()
         Realm.setDefaultConfiguration(config)
-
-        Realm.getInstanceAsync(config, object : Realm.Callback() {
-            override fun onSuccess(realm: Realm) {
-                Log.v(
-                    "EXAMPLE",
-                    "Successfully opened a realm with reads and writes allowed on the UI thread."
-                )
-            }
-        })
     }
 }
