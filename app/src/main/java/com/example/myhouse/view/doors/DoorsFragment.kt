@@ -54,8 +54,8 @@ class DoorsFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getDoorsFromServer()
 
-        var itemTouchHelper = ItemTouchHelper(DoorsSwipeHelper(adapter.DoorsViewHolder(binding.root)))
-        itemTouchHelper.attachToRecyclerView(binding.doorsRecyclerView)
+//        var itemTouchHelper = ItemTouchHelper(DoorsSwipeHelper(adapter.DoorsViewHolder(binding.root)))
+//        itemTouchHelper.attachToRecyclerView(binding.doorsRecyclerView)
 
     }
 

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myhouse.databinding.ItemDoorsBinding
+import com.example.myhouse.databinding.ItemDoorBinding
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.squareup.picasso.Picasso
@@ -22,7 +22,7 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoorsViewHolder {
-        val binding: ItemDoorsBinding =  ItemDoorsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ItemDoorBinding =  ItemDoorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DoorsViewHolder(binding.root)
     }
 
@@ -34,21 +34,21 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
 
     inner class DoorsViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(door: DoorDTO){
-            ItemDoorsBinding.bind(itemView).apply {
-                doorName.text = door.name
-                doorName.setOnClickListener {
-                    if (doorsItemImageView.isVisible) doorsItemImageView.visibility = View.GONE
-                    else doorsItemImageView.visibility = View.VISIBLE
+            ItemDoorBinding.bind(itemView).apply {
+                doorItemName.text = door.name
+                doorItemName.setOnClickListener {
+                    if (doorItemImageView.isVisible) doorItemImageView.visibility = View.GONE
+                    else doorItemImageView.visibility = View.VISIBLE
                 }
-                doorsItemImageView.setOnClickListener {
+                doorItemImageView.setOnClickListener {
                     itemClickListener.onItemClick(door)
                 }
                 if (door.snapshot.isNullOrBlank()) {
                     val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
-                    Picasso.get().load(urlSnapshot).into(doorsItemImageView)
+                    Picasso.get().load(urlSnapshot).into(doorItemImageView)
                 } else {
                     val urlSnapshot: String = door.snapshot!!
-                    Picasso.get().load(urlSnapshot).into(doorsItemImageView)
+                    Picasso.get().load(urlSnapshot).into(doorItemImageView)
                 }
 
                 itemView.setOnClickListener{
