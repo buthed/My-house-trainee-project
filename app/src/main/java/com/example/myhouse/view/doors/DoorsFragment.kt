@@ -2,16 +2,10 @@ package com.example.myhouse.view.doors
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.myhouse.R
-import com.example.myhouse.app.App
-import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.rest.rest_entites.DoorDTO

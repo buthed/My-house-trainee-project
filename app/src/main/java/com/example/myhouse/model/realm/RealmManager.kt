@@ -1,12 +1,9 @@
 package com.example.myhouse.model.realm
 
-import com.example.myhouse.model.Door
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import io.realm.Realm
 import io.realm.kotlin.executeTransactionAwait
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 object RealmManager {
 
@@ -23,7 +20,7 @@ object RealmManager {
             )
             realmTransaction.copyToRealm(newDoor)
         }
-//        backgroundThreadRealm.close()
+        backgroundThreadRealm.close()
     }
 
     suspend fun retrieveDoors(): List<DoorRealm> {
@@ -33,7 +30,7 @@ object RealmManager {
                 .where(DoorRealm::class.java)
                 .findAll())
         }
-//        backgroundThreadRealm.close()
+        backgroundThreadRealm.close()
         return doors
     }
 }

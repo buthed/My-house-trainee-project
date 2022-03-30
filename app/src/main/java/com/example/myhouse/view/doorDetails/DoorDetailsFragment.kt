@@ -1,17 +1,14 @@
 package com.example.myhouse.view.doorDetails
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.myhouse.databinding.FragmentCamerasBinding
 import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.example.myhouse.utils.ViewBindingFragment
 import com.squareup.picasso.Picasso
 
-class DoorDetailsFragment : ViewBindingFragment<FragmentDoorDetailsBinding>(FragmentDoorDetailsBinding::inflate){
+class DoorDetailsFragment :
+    ViewBindingFragment<FragmentDoorDetailsBinding>(FragmentDoorDetailsBinding::inflate){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

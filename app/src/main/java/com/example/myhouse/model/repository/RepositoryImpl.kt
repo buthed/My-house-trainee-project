@@ -1,20 +1,14 @@
 package com.example.myhouse.model.repository
 
-import android.app.Application
-import com.example.myhouse.model.Door
 import com.example.myhouse.model.entites.Camera
+import com.example.myhouse.model.entites.Door
 import com.example.myhouse.model.entites.getCameras
-import com.example.myhouse.model.getDoors
-import com.example.myhouse.model.realm.DoorRealm
+import com.example.myhouse.model.entites.getDoors
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.rest.RemoteDataSource
 import com.example.myhouse.model.rest.rest_entites.CameraDTO
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
-import io.reactivex.rxjava3.core.Observable
 import io.realm.Realm
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class RepositoryImpl(
     private val remoteDataSource: RemoteDataSource,

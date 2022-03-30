@@ -1,12 +1,8 @@
 package com.example.myhouse.view.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.databinding.MainFragmentBinding
 import com.example.myhouse.utils.ViewBindingFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -30,7 +26,6 @@ class MainFragment : ViewBindingFragment<MainFragmentBinding>(MainFragmentBindin
     }
 
     companion object {
-
         fun newInstance() = MainFragment()
     }
 }

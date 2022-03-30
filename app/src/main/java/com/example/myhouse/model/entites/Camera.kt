@@ -9,7 +9,6 @@ data class Camera (
     val rec: Boolean
 )
 
-
 fun getCameras() = listOf(
     Camera("Camera 1","https://serverspace.ru/wp-content/uploads/2019/06/backup-i-snapshot.png","a",1, favorites = true, rec = false),
     Camera("Camera 2","Earth","a",1, favorites = false, rec = true),

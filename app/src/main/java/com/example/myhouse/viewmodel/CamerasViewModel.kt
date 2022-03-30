@@ -8,6 +8,9 @@ import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.repository.Repository
 import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CamerasViewModel(
     val liveDataObserverCameras : MutableLiveData<AppStateCameras> = MutableLiveData(),
@@ -18,8 +21,9 @@ class CamerasViewModel(
 
     fun getCamerasFromServer() {
         liveDataObserverCameras.value = AppStateCameras.Loading
-        Thread {
-            liveDataObserverCameras.postValue(AppStateCameras.Success(repository.getCamerasFromServer()))
-        }.start()
+        GlobalScope.launch(Dispatchers.IO) {
+            liveDataObserverCameras
+                .postValue(AppStateCameras.Success(repository.getCamerasFromServer()))
+        }
     }
 }
