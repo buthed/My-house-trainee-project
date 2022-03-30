@@ -14,5 +14,3 @@
         <item name="android:textColor">@color/text_color</item>
     </style>
 </resources>
-
-<!--TODO add font-->

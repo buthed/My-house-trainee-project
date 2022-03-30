@@ -17,5 +17,4 @@ class MainViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
             else->{ Fragment() }
         }
     }
-
 }

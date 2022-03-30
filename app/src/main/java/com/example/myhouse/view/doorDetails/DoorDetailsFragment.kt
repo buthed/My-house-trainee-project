@@ -1,29 +1,14 @@
 package com.example.myhouse.view.doorDetails
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.example.myhouse.utils.ViewBindingFragment
 import com.squareup.picasso.Picasso
 
-class DoorDetailsFragment : Fragment() {
-
-    private var _binding: FragmentDoorDetailsBinding? = null
-    val binding: FragmentDoorDetailsBinding
-        get() {
-            return _binding!!
-        }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentDoorDetailsBinding.inflate(inflater)
-        return binding.root
-    }
+class DoorDetailsFragment :
+    ViewBindingFragment<FragmentDoorDetailsBinding>(FragmentDoorDetailsBinding::inflate){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,11 +24,6 @@ class DoorDetailsFragment : Fragment() {
         doorDetailsBackButton.setOnClickListener {
             activity?.supportFragmentManager?.popBackStack()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     var doorBundle:DoorDTO? = null

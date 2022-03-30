@@ -41,7 +41,6 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
                     val urlSnapshot: String = camera.snapshot
                     Picasso.get().load(urlSnapshot).into(cameraItemImageView)
                 }
-
             }
         }
     }

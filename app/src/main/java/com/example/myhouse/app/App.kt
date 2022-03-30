@@ -9,11 +9,14 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        initRealm()
+    }
+
+    private fun initRealm() {
         Realm.init(this)
         val realmName: String = "MyHouseDB"
         val config = RealmConfiguration.Builder()
             .name(realmName)
-            .schemaVersion(0)
             .build()
         Realm.setDefaultConfiguration(config)
     }
