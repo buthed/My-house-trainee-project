@@ -11,19 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.myhouse.R
 import com.example.myhouse.app.App
+import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.example.myhouse.utils.ViewBindingFragment
 import com.example.myhouse.view.doorDetails.DoorDetailsFragment
 import com.example.myhouse.viewmodel.DoorsViewModel
 
-class DoorsFragment : Fragment() {
+class DoorsFragment : ViewBindingFragment<FragmentDoorsBinding>(FragmentDoorsBinding::inflate) {
 
-    private var _binding: FragmentDoorsBinding? = null
-    val binding: FragmentDoorsBinding
-        get() {
-            return _binding!!
-        }
     lateinit var viewModel: DoorsViewModel
     private val adapter: DoorsAdapter =
         DoorsAdapter(object : OnListItemClickListner {
@@ -38,16 +35,6 @@ class DoorsFragment : Fragment() {
                     ?.commitAllowingStateLoss()
             }
         })
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentDoorsBinding.inflate(inflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,11 +57,6 @@ class DoorsFragment : Fragment() {
 
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

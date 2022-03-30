@@ -9,26 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentCamerasBinding
 import com.example.myhouse.model.AppStateCameras
+import com.example.myhouse.utils.ViewBindingFragment
 import com.example.myhouse.viewmodel.CamerasViewModel
 
-class CamerasFragment : Fragment() {
+class CamerasFragment : ViewBindingFragment<FragmentCamerasBinding>(FragmentCamerasBinding::inflate) {
 
-    private var _binding: FragmentCamerasBinding? = null
-    val binding: FragmentCamerasBinding
-        get() {
-            return _binding!!
-        }
     lateinit var viewModel: CamerasViewModel
     private val adapter: CamerasAdapter by lazy { CamerasAdapter() }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentCamerasBinding.inflate(inflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,11 +38,6 @@ class CamerasFragment : Fragment() {
 
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {
