@@ -1,14 +1,19 @@
 package com.example.myhouse.view.doors
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myhouse.MainActivity
+import com.example.myhouse.app.App
 import com.example.myhouse.databinding.ItemDoorBinding
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.currentCoroutineContext
 
 
 class DoorsAdapter(private var itemClickListener: OnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
@@ -50,7 +55,9 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
                     val urlSnapshot: String = door.snapshot!!
                     Picasso.get().load(urlSnapshot).into(doorItemImageView)
                 }
-
+                doorItemEditButton.setOnClickListener{
+                    Toast.makeText(App.applicationContext(), "Clicked Laugh Vote", Toast.LENGTH_SHORT).show();
+                }
                 itemView.setOnClickListener{
 
                 }

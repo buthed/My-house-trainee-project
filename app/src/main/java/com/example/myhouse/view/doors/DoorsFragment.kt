@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.myhouse.R
+import com.example.myhouse.app.App
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
@@ -53,10 +54,6 @@ class DoorsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getDoorsFromServer()
-
-//        var itemTouchHelper = ItemTouchHelper(DoorsSwipeHelper(adapter.DoorsViewHolder(binding.root)))
-//        itemTouchHelper.attachToRecyclerView(binding.doorsRecyclerView)
-
     }
 
     private fun renderData(appStateDoors: AppStateDoors) {

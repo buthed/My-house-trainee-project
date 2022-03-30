@@ -10,10 +10,15 @@ import io.realm.mongodb.sync.SyncConfiguration
 
 class App: Application() {
 
+    init {
+        instance = this
+    }
+
     override fun onCreate() {
         super.onCreate()
 
         initRealm()
+        val context: Context = App.applicationContext()
     }
 
     private fun initRealm() {
@@ -23,5 +28,13 @@ class App: Application() {
             .name(realmName)
             .build()
         Realm.setDefaultConfiguration(config)
+    }
+
+    companion object {
+        private var instance: App? = null
+
+        fun applicationContext() : Context {
+            return instance!!.applicationContext
+        }
     }
 }
