@@ -11,31 +11,32 @@
     <TextView
         android:id="@+id/doorDetailsName"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="bottom"
         android:textSize="@dimen/middleTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Door name"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/doorDetailsSnapshot"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doorDetailsName"
-        tools:src="@drawable/ic_launcher_foreground" />
+        tools:src="@drawable/photo_unavailable" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/groupOpenDoorButton"
-        android:layout_width="360dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="35dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="1dp"
         app:layout_constraintBottom_toTopOf="@+id/doorDetailsSettingsButton"
@@ -54,8 +55,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/doorDetailsOpenDoorIcon"
             android:layout_marginTop="10dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/icon_key"
             app:layout_constraintBottom_toTopOf="@+id/doorDetailsOpenDoorText"
