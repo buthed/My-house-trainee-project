@@ -1,9 +1,9 @@
-package com.example.myhouse.view.main
+package com.example.myhouse.view.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.myhouse.view.cameras.CamerasFragment
-import com.example.myhouse.view.doors.DoorsFragment
+import com.example.myhouse.view.fragments.CamerasFragment
+import com.example.myhouse.view.fragments.DoorsFragment
 
 class MainViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)  {
     override fun getItemCount(): Int {

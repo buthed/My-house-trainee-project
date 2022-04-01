@@ -1,4 +1,4 @@
-package com.example.myhouse.view.cameras
+package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.databinding.FragmentCamerasBinding
 import com.example.myhouse.model.AppStateCameras
-import com.example.myhouse.utils.ViewBindingFragment
+import com.example.myhouse.base.view.ViewBindingFragment
+import com.example.myhouse.view.adapters.CamerasAdapter
 import com.example.myhouse.viewmodel.CamerasViewModel
 
 class CamerasFragment : ViewBindingFragment<FragmentCamerasBinding>(FragmentCamerasBinding::inflate) {

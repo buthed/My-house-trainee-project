@@ -1,4 +1,4 @@
-package com.example.myhouse.view.cameras
+package com.example.myhouse.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View

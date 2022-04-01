@@ -1,4 +1,4 @@
-package com.example.myhouse.view.doors
+package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -9,15 +9,16 @@ import com.example.myhouse.R
 import com.example.myhouse.databinding.FragmentDoorsBinding
 import com.example.myhouse.model.AppStateDoors
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
-import com.example.myhouse.utils.ViewBindingFragment
-import com.example.myhouse.view.doorDetails.DoorDetailsFragment
+import com.example.myhouse.base.view.ViewBindingFragment
+import com.example.myhouse.view.adapters.DoorsAdapter
+import com.example.myhouse.view.clicklistners.DoorOnListItemClickListner
 import com.example.myhouse.viewmodel.DoorsViewModel
 
 class DoorsFragment : ViewBindingFragment<FragmentDoorsBinding>(FragmentDoorsBinding::inflate) {
 
     lateinit var viewModel: DoorsViewModel
     private val adapter: DoorsAdapter =
-        DoorsAdapter(object : OnListItemClickListner {
+        DoorsAdapter(object : DoorOnListItemClickListner {
 
             override fun onItemClick(door: DoorDTO) {
                 Log.d("NewFragment","CLicl"+door.name)

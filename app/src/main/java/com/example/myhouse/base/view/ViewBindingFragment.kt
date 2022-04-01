@@ -1,4 +1,4 @@
-package com.example.myhouse.utils
+package com.example.myhouse.base.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

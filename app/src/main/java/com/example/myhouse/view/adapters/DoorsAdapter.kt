@@ -1,19 +1,18 @@
-package com.example.myhouse.view.doors
+package com.example.myhouse.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myhouse.app.App
 import com.example.myhouse.databinding.ItemDoorBinding
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
+import com.example.myhouse.view.clicklistners.DoorOnListItemClickListner
 import com.squareup.picasso.Picasso
 
 
-class DoorsAdapter(private var itemClickListener: OnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
+class DoorsAdapter(private var itemClickListenerDoor: DoorOnListItemClickListner): RecyclerView.Adapter<DoorsAdapter.DoorsViewHolder>()  {
 
     private lateinit var realmManager: RealmManager
     private var doors: List<DoorDTO> = listOf()
@@ -43,7 +42,7 @@ class DoorsAdapter(private var itemClickListener: OnListItemClickListner): Recyc
                     else doorItemImageView.visibility = View.VISIBLE
                 }
                 doorItemImageView.setOnClickListener {
-                    itemClickListener.onItemClick(door)
+                    itemClickListenerDoor.onItemClick(door)
                 }
                 if (door.snapshot.isNullOrBlank()) {
                     val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"

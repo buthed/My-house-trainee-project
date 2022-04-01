@@ -1,7 +1,9 @@
-package com.example.myhouse.view.doors
+package com.example.myhouse.view.clicklistners
 
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
 
-interface OnListItemClickListner {
+interface DoorOnListItemClickListner {
     fun onItemClick(door: DoorDTO)
 }
+
+

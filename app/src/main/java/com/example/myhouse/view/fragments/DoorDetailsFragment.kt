@@ -1,10 +1,10 @@
-package com.example.myhouse.view.doorDetails
+package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.view.View
 import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
-import com.example.myhouse.utils.ViewBindingFragment
+import com.example.myhouse.base.view.ViewBindingFragment
 import com.squareup.picasso.Picasso
 
 class DoorDetailsFragment :

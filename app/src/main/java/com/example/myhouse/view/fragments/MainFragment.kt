@@ -1,10 +1,11 @@
-package com.example.myhouse.view.main
+package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myhouse.databinding.MainFragmentBinding
-import com.example.myhouse.utils.ViewBindingFragment
+import com.example.myhouse.base.view.ViewBindingFragment
+import com.example.myhouse.view.adapters.MainViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainFragment : ViewBindingFragment<MainFragmentBinding>(MainFragmentBinding::inflate) {
