@@ -2,26 +2,23 @@ package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.myhouse.R
+import com.example.myhouse.base.view.BaseFragmentViewBindingViewModel
 import com.example.myhouse.databinding.FragmentDoorsBinding
-import com.example.myhouse.model.AppStateDoors
+import com.example.myhouse.model.AppState
 import com.example.myhouse.model.rest.rest_entites.DoorDTO
-import com.example.myhouse.base.view.ViewBindingFragment
 import com.example.myhouse.view.adapters.DoorsAdapter
 import com.example.myhouse.view.clicklistners.DoorOnListItemClickListner
 import com.example.myhouse.viewmodel.DoorsViewModel
 
-class DoorsFragment : ViewBindingFragment<FragmentDoorsBinding>(FragmentDoorsBinding::inflate) {
+class DoorsFragment
+    : BaseFragmentViewBindingViewModel<FragmentDoorsBinding>(FragmentDoorsBinding::inflate, DoorsViewModel()) {
 
-    lateinit var viewModel: DoorsViewModel
     private val adapter: DoorsAdapter =
         DoorsAdapter(object : DoorOnListItemClickListner {
 
-            override fun onItemClick(door: DoorDTO) {
-                Log.d("NewFragment","CLicl"+door.name)
+            override fun onItemClickDoor(door: DoorDTO) {
+                Log.d("NewFragment","Click"+door.name)
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.container, DoorDetailsFragment.newInstance(Bundle().apply {
                         putParcelable(DoorDetailsFragment.BUNDLE_EXTRA, door)
@@ -31,32 +28,20 @@ class DoorsFragment : ViewBindingFragment<FragmentDoorsBinding>(FragmentDoorsBin
             }
         })
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DoorsViewModel::class.java)
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getDoorsFromServer()
-    }
 
-    private fun renderData(appStateDoors: AppStateDoors) {
-        when (appStateDoors) {
-            is AppStateDoors.Success -> {
+    override fun renderData(appState: AppState) {
+        when (appState) {
+            is AppState.SuccessDoors -> {
                 //adapter.setListener(this)
-                adapter.setData(appStateDoors.doorsData)
+                adapter.setData(appState.doorsData)
                 binding.doorsRecyclerView.adapter = adapter
             }
-            is AppStateDoors.Loading -> {
+            is AppState.Loading -> {
                 //TODO добавить загрузку?
             }
-            is AppStateDoors.Error -> {
-
+            is AppState.Error -> {
+                //TODO Обработку ошибок
             }
-        }
-    }
-
-    companion object {
-        fun newInstance(): DoorsFragment {
-            return DoorsFragment()
         }
     }
 }

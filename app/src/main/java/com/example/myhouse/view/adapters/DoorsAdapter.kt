@@ -42,7 +42,7 @@ class DoorsAdapter(private var itemClickListenerDoor: DoorOnListItemClickListner
                     else doorItemImageView.visibility = View.VISIBLE
                 }
                 doorItemImageView.setOnClickListener {
-                    itemClickListenerDoor.onItemClick(door)
+                    itemClickListenerDoor.onItemClickDoor(door)
                 }
                 if (door.snapshot.isNullOrBlank()) {
                     val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"

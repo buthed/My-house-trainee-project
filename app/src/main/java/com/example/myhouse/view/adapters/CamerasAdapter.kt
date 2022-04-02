@@ -34,6 +34,7 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
                 cameraItemName.text = camera.name
                 if (camera.rec) cameraItemRec.visibility = View.VISIBLE
                 if (camera.favorites) cameraItemFavorite.setChecked(true)
+                //TODO Переделать на Glide и поставить заглушку
                 if (camera.snapshot.isNullOrBlank()) {
                     val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
                     Picasso.get().load(urlSnapshot).into(cameraItemImageView)

@@ -1,45 +1,28 @@
 package com.example.myhouse.view.fragments
 
-import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.example.myhouse.base.view.BaseFragmentViewBindingViewModel
 import com.example.myhouse.databinding.FragmentCamerasBinding
-import com.example.myhouse.model.AppStateCameras
-import com.example.myhouse.base.view.ViewBindingFragment
+import com.example.myhouse.model.AppState
 import com.example.myhouse.view.adapters.CamerasAdapter
 import com.example.myhouse.viewmodel.CamerasViewModel
 
-class CamerasFragment : ViewBindingFragment<FragmentCamerasBinding>(FragmentCamerasBinding::inflate) {
+class CamerasFragment
+    : BaseFragmentViewBindingViewModel<FragmentCamerasBinding>(FragmentCamerasBinding::inflate, CamerasViewModel()) {
 
-    lateinit var viewModel: CamerasViewModel
     private val adapter: CamerasAdapter by lazy { CamerasAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CamerasViewModel::class.java)
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getCamerasFromServer()
-    }
-
-    private fun renderData(appStateCameras: AppStateCameras) {
-        when (appStateCameras) {
-            is AppStateCameras.Success -> {
+    override fun renderData(appState: AppState) {
+        when (appState) {
+            is AppState.SuccessCameras -> {
                 binding.cameraRecyclerView.adapter = adapter
-                adapter.setData(appStateCameras.camerasData)
+                adapter.setData(appState.camerasData)
             }
-            is AppStateCameras.Loading -> {
+            is AppState.Loading -> {
                 //TODO добавить загрузку?
             }
-            is AppStateCameras.Error -> {
-
+            is AppState.Error -> {
+                //TODO Обработку ошибок
             }
-        }
-    }
-
-    companion object {
-        fun newInstance(): CamerasFragment {
-            return CamerasFragment()
         }
     }
 }
