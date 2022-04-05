@@ -26,7 +26,7 @@ class RepositoryImpl(
 //        return   realmManager.retrieveDoors()
 //        backgroundThreadRealm.close()
 //    }
-
+        //TODO добавить потоки и обработки ошибок
     override fun getDoorsFromServer(): List<DoorDTO> {
         val dto = remoteDataSource.api.getDoorsSource().execute().body()
         return dto?.data!!

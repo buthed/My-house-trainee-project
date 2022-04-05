@@ -22,14 +22,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/doorDetailsSnapshot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doorDetailsName"
+        style="@style/MyCustomImageView"
         tools:src="@drawable/photo_unavailable" />
 
     <androidx.cardview.widget.CardView

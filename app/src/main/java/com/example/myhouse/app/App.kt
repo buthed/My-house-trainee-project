@@ -1,14 +1,21 @@
 package com.example.myhouse.app
 
 import android.app.Application
+import android.content.Context
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
 class App: Application() {
 
+    init {
+        instance = this
+    }
+
     override fun onCreate() {
         super.onCreate()
 
+        val context: Context = App.applicationContext()
         initRealm()
     }
 
@@ -19,5 +26,13 @@ class App: Application() {
             .name(realmName)
             .build()
         Realm.setDefaultConfiguration(config)
+    }
+
+    companion object {
+        private var instance: App? = null
+
+        fun applicationContext() : Context {
+            return instance!!.applicationContext
+        }
     }
 }

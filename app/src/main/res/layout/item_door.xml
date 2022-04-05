@@ -3,20 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_door_motion_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:layout_marginHorizontal="15dp"
-    android:layout_marginTop="10dp"
+    style="@style/MyCustomMotionLayout"
     app:layoutDescription="@xml/item_door_scene">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/doorItemCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="3dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        style="@style/MyCustomCardView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,13 +17,11 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/doorItemImageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/doorItemName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                style="@style/MyCustomImageView"
                 tools:src="@drawable/ic_launcher_foreground" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -60,23 +51,19 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/doorItemEditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:background="@color/bg"
         android:src="@drawable/icon_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/doorItemCardView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MyCustomImageButton"/>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/doorItemFavoriteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/bg"
         android:src="@drawable/icon_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/doorItemEditButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MyCustomImageButton"/>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
