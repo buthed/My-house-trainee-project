@@ -1,5 +1,6 @@
 package com.example.myhouse.model.repository
 
+import android.util.Log
 import com.example.myhouse.model.entites.Camera
 import com.example.myhouse.model.entites.Door
 import com.example.myhouse.model.entites.getCameras
@@ -27,14 +28,24 @@ class RepositoryImpl(
 //        backgroundThreadRealm.close()
 //    }
         //TODO добавить потоки и обработки ошибок
-    override fun getDoorsFromServer(): List<DoorDTO> {
-        val dto = remoteDataSource.api.getDoorsSource().execute().body()
-        return dto?.data!!
+    override fun getDoorsFromServer(): List<DoorDTO>? {
+        return try {
+            val dto = remoteDataSource.api.getDoorsSource().execute().body()
+            dto?.data
+        }  catch (e: Exception) {
+            Log.d("Retrofit", "Error $e")
+            null
+        }
     }
 
-    override fun getCamerasFromServer(): List<CameraDTO> {
-        val dto = remoteDataSource.api.getCamerasSource().execute().body()
-        return dto?.data?.cameras!!
+    override fun getCamerasFromServer(): List<CameraDTO>? {
+        return try {
+            val dto = remoteDataSource.api.getCamerasSource().execute().body()
+            return dto?.data?.cameras
+        } catch (e: Exception) {
+            Log.d("Retrofit", "Error $e")
+            null
+        }
     }
 
 //    override suspend fun saveDoorsToLocalStorage() {

@@ -9,7 +9,7 @@ interface Repository {
     fun getCamerasFromLocalStorage(): List<Camera>
     suspend fun getDoorsFromLocalStorage(): List<Door>
 
-    fun getDoorsFromServer(): List<DoorDTO>
-    fun getCamerasFromServer(): List<CameraDTO>
+    fun getDoorsFromServer(): List<DoorDTO>?
+    fun getCamerasFromServer(): List<CameraDTO>?
 //    suspend fun saveDoorsToLocalStorage()
 }

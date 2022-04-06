@@ -16,7 +16,7 @@ class DoorsViewModel :
     override fun getDataFromServer() {
         liveDataObserver.postValue(AppState.Loading)
         GlobalScope.launch(Dispatchers.IO) {
-            liveDataObserver.postValue(AppState.SuccessDoors(repository.getDoorsFromServer()))
+            liveDataObserver.postValue(AppState.SuccessDoors(repository.getDoorsFromServer()!!))
         }
     }
 }

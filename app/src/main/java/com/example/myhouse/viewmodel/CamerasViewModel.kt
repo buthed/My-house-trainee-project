@@ -17,7 +17,7 @@ class CamerasViewModel :
         liveDataObserver.value = AppState.Loading
         GlobalScope.launch(Dispatchers.IO) {
             liveDataObserver
-                .postValue(AppState.SuccessCameras(repository.getCamerasFromServer()))
+                .postValue(AppState.SuccessCameras(repository.getCamerasFromServer()!!))
         }
     }
 }

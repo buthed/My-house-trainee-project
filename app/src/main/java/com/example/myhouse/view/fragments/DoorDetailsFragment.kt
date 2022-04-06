@@ -2,9 +2,6 @@ package com.example.myhouse.view.fragments
 
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
-import com.example.myhouse.R
-import com.example.myhouse.app.App
 import com.example.myhouse.base.view.BaseFragmentViewBinding
 import com.example.myhouse.databinding.FragmentDoorDetailsBinding
 import com.example.myhouse.model.rest.rest_entites.DoorDTO

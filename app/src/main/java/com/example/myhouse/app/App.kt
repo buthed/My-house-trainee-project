@@ -2,7 +2,6 @@ package com.example.myhouse.app
 
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
