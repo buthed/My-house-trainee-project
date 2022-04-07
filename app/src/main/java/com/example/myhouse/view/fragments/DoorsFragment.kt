@@ -28,7 +28,6 @@ class DoorsFragment
             }
         })
 
-
     override fun renderData(appState: AppState) {
         when (appState) {
             is AppState.SuccessDoors -> {

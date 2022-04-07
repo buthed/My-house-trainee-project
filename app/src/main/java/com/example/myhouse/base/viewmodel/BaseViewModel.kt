@@ -20,5 +20,3 @@ abstract class BaseViewModel(
 
     }
 }
-
-//TODO добавить абстракцию на адаптер
