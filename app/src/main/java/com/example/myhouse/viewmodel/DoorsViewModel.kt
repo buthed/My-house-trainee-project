@@ -6,6 +6,7 @@ import com.example.myhouse.model.AppState
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ class DoorsViewModel :
 
     override fun getDataFromServer() {
         liveDataObserver.postValue(AppState.Loading)
-        GlobalScope.launch(Dispatchers.IO) {
+        CoroutineScope(Dispatchers.IO).launch {
             liveDataObserver.postValue(AppState.SuccessDoors(repository.getDoorsFromServer()!!))
         }
     }

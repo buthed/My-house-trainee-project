@@ -6,6 +6,7 @@ import com.example.myhouse.model.AppState
 import com.example.myhouse.model.realm.RealmManager
 import com.example.myhouse.model.repository.RepositoryImpl
 import com.example.myhouse.model.rest.RemoteDataSource
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -15,9 +16,8 @@ class CamerasViewModel :
 
     override fun getDataFromServer() {
         liveDataObserver.value = AppState.Loading
-        GlobalScope.launch(Dispatchers.IO) {
-            liveDataObserver
-                .postValue(AppState.SuccessCameras(repository.getCamerasFromServer()!!))
+        CoroutineScope(Dispatchers.IO).launch {
+            liveDataObserver.postValue(AppState.SuccessCameras(repository.getCamerasFromServer()!!))
         }
     }
 }
