@@ -1,12 +1,14 @@
-package com.example.myhouse.view.cameras
+package com.example.myhouse.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.myhouse.R
+import com.example.myhouse.app.App
 import com.example.myhouse.databinding.ItemCameraBinding
 import com.example.myhouse.model.rest.rest_entites.CameraDTO
-import com.squareup.picasso.Picasso
 
 class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>() {
 
@@ -34,13 +36,13 @@ class CamerasAdapter(): RecyclerView.Adapter<CamerasAdapter.CamerasViewHolder>()
                 cameraItemName.text = camera.name
                 if (camera.rec) cameraItemRec.visibility = View.VISIBLE
                 if (camera.favorites) cameraItemFavorite.setChecked(true)
-                if (camera.snapshot.isNullOrBlank()) {
-                    val urlSnapshot: String = "https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
-                    Picasso.get().load(urlSnapshot).into(cameraItemImageView)
-                } else {
-                    val urlSnapshot: String = camera.snapshot
-                    Picasso.get().load(urlSnapshot).into(cameraItemImageView)
-                }
+                //TODO Переделать на Glide и поставить заглушку
+                Glide
+                    .with(App.applicationContext())
+                    .load(camera.snapshot)
+                    .placeholder(R.drawable.photo_unavailable)
+                    .error(R.drawable.photo_unavailable)
+                    .into(cameraItemImageView)
             }
         }
     }

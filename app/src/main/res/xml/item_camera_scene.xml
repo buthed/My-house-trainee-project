@@ -9,54 +9,30 @@
         motion:duration="500">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnClick motion:touchAnchorId="@id/doorItemCardView"
+        <OnClick motion:touchAnchorId="@id/cameraItemImageView"
             motion:touchAnchorSide="left"
             motion:clickAction="toggle" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/item_camera_constraint"
+            android:id="@+id/cameraItemCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/cameraItemEditButton"
-            motion:layout_constraintStart_toEndOf="@+id/item_camera_constraint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@id/item_camera_constraint"
-            android:visibility="invisible"
-            android:layout_marginStart="10dp"
-            motion:layout_constraintTop_toTopOf="parent" />
-        <Constraint
-            android:layout_height="wrap_content"
-            motion:layout_editor_absoluteX="275dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:id="@+id/constraintLayout8"
-            motion:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/item_camera_constraint"
+            android:id="@+id/cameraItemCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-70dp"
+            android:layout_marginStart="-100dp"
+            android:layout_marginEnd="100dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/cameraItemEditButton"
-            motion:layout_constraintStart_toEndOf="@+id/item_camera_constraint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@id/item_camera_constraint"
-            android:visibility="visible"
-            android:layout_marginStart="10dp"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintVertical_bias="0.504" />
     </ConstraintSet>
 </MotionScene>
